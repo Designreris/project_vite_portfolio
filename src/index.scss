@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+}
+
+body {
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+// ==== Themes ==== //
+main[data-theme="light"] {
+  --text: #000000;
+  --background: #e0e3f3;
+  --primary: #75859f;
+  --secondary: #6b8aa8;
+  --accent: #9ab5df;
+}
+main[data-theme="dark"] {
+  --text: #e0e3f3;
+  --background: #283058;
+  --primary: #60708a;
+  --secondary: #577594;
+  --accent: #203a65;
+}
+main {
+  min-height: 100svh;
+  color: var(--text);
+  background-color: var(--background);
+}
+
+// ==== Mixins ==== //
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// ==== Navbar ==== //
+.nav_container {
+  @include flex(column, center, center);
+  color: var(--text);
+  background-color: var(--secondary);
+
+  .nav-btn {
+    @include flex(row, center, center);
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    color: var(--text);
+    background-color: var(--primary);
+  }
+  .nav-btn:disabled {
+    display: none;
+  }
+
+  .nav-items {
+    @include flex(column, center, center);
+    width: 100%;
+    list-style-type: none;
+    .nav-item {
+      @include flex(row, center, center);
+      text-align: center;
+      width: 100%;
+      a {
+        flex-grow: 1;
+        color: var(--text);
+        text-decoration: none;
+      }
+    }
+    .nav-item:hover {
+      a {
+        color: var(--background);
+        background-color: var(--text);
+        filter: opacity(50%);
+      }
+    }
+    .nav-item.active {
+      a {
+        color: var(--background);
+        background-color: var(--text);
+        filter: opacity(100%);
+      }
+    }
+  }
+
+  .theme-btn {
+    background: none;
+    border: none;
+    margin: 0.5rem 0.75rem;
+    color: var(--text);
+    transform: scale(1.2);
+  }
+  .theme-btn:hover {
+    color: var(--background);
+    cursor: pointer;
+  }
+
+  // Show-Hide Menu
+  .nav-items.show-nav {
+    display: flex;
+  }
+  .nav-items.hide-nav {
+    display: none;
+  }
+}
+
+// ==== Portfolio ==== //
+.portfolio_container {
+  .title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+
+  .projects_container {
+    h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .links {
+      @include flex(row, center, center);
+      gap: 1rem;
+      margin-bottom: 1rem;
+      a {
+        color: var(--text);
+        background-color: var(--primary);
+        border: 2px solid var(--text);
+        border-radius: 8px;
+
+        padding: 0 0.5em;
+        text-decoration: none;
+        text-align: center;
+      }
+      a:first-child {
+        background-color: chocolate;
+      }
+      a:nth-child(2) {
+        background-color: cadetblue;
+      }
+      a:last-child {
+        background-color: darkslateblue;
+      }
+    }
+    @media screen and (min-width: 768px) {
+      .links {
+        justify-content: flex-start;
+      }
+    }
+
+    .project {
+      background-color: var(--primary);
+      padding: 1rem;
+      border-bottom: 2px ridge var(--secondary);
+
+      .img_container {
+        @include flex(row, flex-start, flex-start);
+        overflow-x: auto;
+        img {
+          max-height: 200px;
+          max-width: 400px;
+          object-fit: contain;
+          background-color: var(--secondary);
+        }
+      }
+
+      .img_container.hide {
+        display: none;
+      }
+
+      button {
+        margin: 1rem 0;
+        padding: 0.5em;
+        border: 1px solid var(--text);
+        border-radius: 8px;
+        color: var(--text);
+        background-color: var(--accent);
+      }
+    }
+  }
+}
