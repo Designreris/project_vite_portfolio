@@ -27,6 +27,14 @@ import sunnyside_mobile from "./challenge_sunnysideagency/sunnyside_mobile.png"
 import sunnyside_mobile_menu from "./challenge_sunnysideagency/sunnyside_mobile_menu.png"
 
 // Rock, Paper, Scissors
+import rockpaper_choose from "./challenge_rockpaperscissors/rockpaper_choose.png"
+import rockpaper_results from "./challenge_rockpaperscissors/rockpaper_results.png"
+import rockpaper_rules from "./challenge_rockpaperscissors/rockpaper_rules.png"
+
+// Age App
+import ageapp_desktop from "./challenge_ageapp/ageapp_desktop.png"
+import ageapp_mobile from "./challenge_ageapp/ageapp_mobile.png"
+import ageapp_results from "./challenge_ageapp/ageapp_results.png"
 
 // Space Tourism
 import space_desk_home from "./challenge_spacetourism/space_desk_home.png"
@@ -62,4 +70,10 @@ export const assetImgList = {
     space_mobile_home,
     space_mobile_menu,
   ],
+  challenge_rockpaperscissors: [
+    rockpaper_choose,
+    rockpaper_results,
+    rockpaper_rules,
+  ],
+  challenge_ageapp: [ageapp_desktop, ageapp_mobile, ageapp_results],
 }
