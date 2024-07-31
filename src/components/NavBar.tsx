@@ -63,7 +63,11 @@ export default function NavBar({ theme, setTheme }: Props) {
             About
           </Link>
         </li>
-        <button className="theme-btn" onClick={() => handleTheme()}>
+        <button
+          className="theme-btn"
+          onClick={() => handleTheme()}
+          aria-label="theme toggle button"
+        >
           <FaAdjust />
         </button>
       </ul>

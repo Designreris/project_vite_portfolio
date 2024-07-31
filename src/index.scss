@@ -47,8 +47,6 @@ main[data-theme="dark"] {
 }
 main {
   color: var(--text);
-  background-color: var(--background);
-  z-index: -10;
 }
 
 // ==== Mixins ==== //
@@ -59,11 +57,29 @@ main {
   align-items: $align;
 }
 
+// ==== Utility ==== //
+.link {
+  margin-top: 1rem;
+  color: var(--primary);
+  text-decoration: none;
+  border: 1px solid var(--primary);
+  border-radius: 16px;
+  padding: 0.5em 1.5em;
+  // background-color: var();
+}
+.link:hover,
+.link:focus {
+  color: var(--background);
+  border: 1px solid var(--background);
+  background-color: var(--primary);
+}
+
 // ==== Navbar ==== //
 // Desktop
 .nav_container {
   @include flex(row, flex-end, center);
   padding-inline: 1rem;
+  background-color: var(--background);
 
   .nav-btn {
     display: none;
@@ -153,25 +169,23 @@ main {
 }
 
 // ==== Home Page ==== //
-
 // HeroTop
 .hero_container {
   position: relative;
   @include flex(row, center, center);
   padding: 4rem;
+  height: 100svh;
 
   // Left-Side
   .hero_left {
     @include flex(column, center, flex-start);
     width: 50%;
-    z-index: 100;
   }
 
   // Right-Side
   .hero_right {
-    @include flex(column, center, flex-end);
+    @include flex(column, center, center);
     width: 50%;
-    z-index: 100;
 
     .profile_pic {
       border: 1px solid var(--text);
@@ -180,14 +194,54 @@ main {
       transform: scale(1.5);
     }
   }
-  .bg_img {
-    content: "";
-    display: flex;
-    position: absolute;
-    inset: 0;
-    background-image: url("./assets/milad_fakurian_unsplash_hi-res.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: var(--bg_filter);
+}
+.hero_container::after {
+  content: "";
+  display: flex;
+  position: absolute;
+  inset: 0;
+  background-image: url("./assets/milad_fakurian_unsplash_hi-res.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: var(--bg_filter);
+  z-index: -100;
+}
+
+// Links
+.home_links {
+  @include flex(column, space-between, flex-start);
+  padding: 2rem 4rem;
+  background-color: var(--background);
+
+  p {
+    text-wrap: balance;
+  }
+}
+// Mobile
+@media screen and (max-width: 767px) {
+  .hero_container {
+    @include flex(column, center, center);
+    padding: 0;
+
+    .hero_right {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+
+      .profile_pic {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+// Tech Card
+.home_tech {
+  @include flex(column, center, flex-start);
+  padding: 4rem;
+  // overflow-x: hidden;
+
+  ul {
+    @include flex(row, flex-start, center);
   }
 }

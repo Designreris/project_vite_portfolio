@@ -1,7 +1,6 @@
 export default function HeroTop({ profilePic }: { profilePic: string }) {
   return (
     <div className="hero_container">
-      <div className="bg_img"></div>
       {/* Left-Side */}
       <div className="hero_left">
         <h1>
@@ -22,11 +21,6 @@ export default function HeroTop({ profilePic }: { profilePic: string }) {
           height={100}
         />
       </div>
-      <div>
-        <button>View my Portfolio</button>
-        <button>View my Code</button>
-      </div>
-      <div>@TODO: Techs</div>
     </div>
   )
 }

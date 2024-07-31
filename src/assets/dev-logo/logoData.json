@@ -1,0 +1,64 @@
+{
+  "logo": [
+    {
+      "name": "html5",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+    },
+    {
+      "name": "css3",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+    },
+    {
+      "name": "javascript",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+    },
+    {
+      "name": "typescript",
+      "url": "https://www.typescriptlang.org/"
+    },
+    {
+      "name": "react",
+      "url": "https://react.dev/"
+    },
+    {
+      "name": "react_native",
+      "url": "https://reactnative.dev/"
+    },
+    {
+      "name": "next_js",
+      "url": "https://nextjs.org/"
+    },
+    {
+      "name": "node_js",
+      "url": "https://nodejs.org/"
+    },
+    {
+      "name": "redux",
+      "url": "https://redux.js.org/"
+    },
+    {
+      "name": "prisma",
+      "url": "https://www.prisma.io/"
+    },
+    {
+      "name": "mysql",
+      "url": "https://www.mysql.com/"
+    },
+    {
+      "name": "firebase",
+      "url": "https://firebase.google.com/"
+    },
+    {
+      "name": "vite",
+      "url": "https://vitejs.dev/"
+    },
+    {
+      "name": "sass",
+      "url": "https://sass-lang.com/"
+    },
+    {
+      "name": "tailwind",
+      "url": "https://tailwindcss.com/"
+    }
+  ]
+}
