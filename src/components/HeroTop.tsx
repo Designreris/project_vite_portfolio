@@ -1,8 +1,15 @@
 export default function HeroTop({ profilePic }: { profilePic: string }) {
   return (
     <div className="hero_container">
-      {/* Left-Side */}
-      <div className="hero_left">
+      <div className="hero_picture">
+        <img
+          className="profile_pic"
+          src={profilePic}
+          width={100}
+          height={100}
+        />
+      </div>
+      <div className="hero_description">
         <h1>
           Fullstack <span>Web</span> Developer
         </h1>
@@ -11,15 +18,6 @@ export default function HeroTop({ profilePic }: { profilePic: string }) {
           <br /> I build websites & apps with Typescript, using libraries and
           frameworks.
         </p>
-      </div>
-      {/* Right-Side */}
-      <div className="hero_right">
-        <img
-          className="profile_pic"
-          src={profilePic}
-          width={100}
-          height={100}
-        />
       </div>
     </div>
   )

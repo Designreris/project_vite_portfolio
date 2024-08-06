@@ -1,3 +1,4 @@
+// ==== Defaults ==== //
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
 * {
@@ -27,6 +28,7 @@ h6 {
   font-weight: 700;
   font-style: normal;
 }
+/////////////////////////////////////////////////////////
 
 // ==== Themes ==== //
 main[data-theme="light"] {
@@ -46,16 +48,37 @@ main[data-theme="dark"] {
   --bg_filter: blur(1px) invert(0) hue-rotate(0deg) brightness(100%);
 }
 main {
+  position: relative;
   color: var(--text);
 }
+main::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--background);
+  z-index: -200;
+}
+/////////////////////////////////////////////////////////
 
-// ==== Mixins ==== //
+// ==== Mixin ==== //
 @mixin flex($direction, $justify, $align) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
   align-items: $align;
 }
+/////////////////////////////////////////////////////////
+
+// ==== Animation ==== //
+@keyframes scroll {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: -145%;
+  }
+}
+/////////////////////////////////////////////////////////
 
 // ==== Utility ==== //
 .link {
@@ -72,7 +95,9 @@ main {
   color: var(--background);
   border: 1px solid var(--background);
   background-color: var(--primary);
+  filter: drop-shadow(0px 0px 8px blue);
 }
+/////////////////////////////////////////////////////////
 
 // ==== Navbar ==== //
 // Desktop
@@ -167,32 +192,34 @@ main {
     }
   }
 }
+/////////////////////////////////////////////////////////
 
 // ==== Home Page ==== //
 // HeroTop
 .hero_container {
+  @include flex(column, center, center);
   position: relative;
-  @include flex(row, center, center);
-  padding: 4rem;
-  height: 100svh;
+  min-height: 100svh;
+  --pictureHeight: 200px;
 
-  // Left-Side
-  .hero_left {
-    @include flex(column, center, flex-start);
-    width: 50%;
-  }
+  .hero_picture {
+    margin-bottom: 4rem;
+    width: var(--pictureHeight);
+    height: var(--pictureHeight);
+    border-radius: 50%;
+    background-color: var(--background);
 
-  // Right-Side
-  .hero_right {
-    @include flex(column, center, center);
-    width: 50%;
-
-    .profile_pic {
-      border: 1px solid var(--text);
-      border-radius: 50%;
-      background-color: var(--background);
-      transform: scale(1.5);
+    img {
+      @include flex(column, center, center);
+      width: var(--pictureHeight);
+      height: var(--pictureHeight);
+      transform-origin: center;
+      object-fit: cover;
+      object-position: center;
     }
+  }
+  .hero_description {
+    @include flex(column, center, center);
   }
 }
 .hero_container::after {
@@ -206,6 +233,10 @@ main {
   background-position: center;
   filter: var(--bg_filter);
   z-index: -100;
+
+  @media screen and (max-width: 767px) {
+    background-image: url("./assets//milad_fakurian_unsplash_low-res.jpg");
+  }
 }
 
 // Links
@@ -218,30 +249,174 @@ main {
     text-wrap: balance;
   }
 }
+
+// Tech Card
+.home_tech {
+  @include flex(column, flex-start, center);
+  position: relative;
+  margin-top: 2rem;
+  margin-inline: 4rem;
+  overflow: hidden;
+  height: 250px;
+  background-color: var(--background);
+
+  h2 {
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    @include flex(row, flex-start, center);
+    width: 100%;
+    overflow-x: scroll;
+
+    li {
+      @include flex(column, center, center);
+      list-style-type: none;
+      padding-inline: 1rem;
+      margin-bottom: 1rem;
+
+      a {
+        position: relative;
+        color: var(--text);
+        text-decoration: none;
+        text-transform: capitalize;
+      }
+      a::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--primary);
+        transform-origin: bottom;
+        transition: transform 0.25s ease-out;
+      }
+      a:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+  // ul:hover {
+  //   animation-play-state: paused;
+  // }
+
+  .home_tech::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -100;
+  }
+}
+
 // Mobile
 @media screen and (max-width: 767px) {
   .hero_container {
-    @include flex(column, center, center);
-    padding: 0;
+    @include flex(column, center, flex-start);
+    padding: 0 1rem;
 
     .hero_right {
       margin-top: 2rem;
       margin-bottom: 2rem;
+      margin-inline: auto;
 
       .profile_pic {
         transform: scale(1);
       }
     }
   }
-}
 
-// Tech Card
-.home_tech {
-  @include flex(column, center, flex-start);
-  padding: 4rem;
-  // overflow-x: hidden;
+  .home_links {
+    padding: 1rem;
+  }
 
-  ul {
-    @include flex(row, flex-start, center);
+  .home_tech {
+    margin-inline: 1rem;
   }
 }
+/////////////////////////////////////////////////////////
+
+// ==== Portfolio ==== //
+.portfolio_container {
+  @include flex(column, center, flex-start);
+  padding: 1rem 4rem;
+  overflow-x: hidden;
+
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .projects_container {
+    @include flex(column, center, center);
+    margin-bottom: 1rem;
+
+    .project {
+      @include flex(column, center, flex-start);
+
+      h3 {
+        font-weight: 600;
+      }
+
+      h4 {
+        font-size: 1rem;
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      p {
+        text-wrap: balance;
+      }
+
+      .links {
+        @include flex(row, center, center);
+        margin-bottom: 1rem;
+
+        a {
+          margin-top: 1rem;
+          margin-right: 1rem;
+          color: var(--primary);
+          text-decoration: none;
+          border: 1px solid var(--primary);
+          border-radius: 16px;
+          padding: 0.5em 1.5em;
+        }
+        a:hover,
+        a:focus {
+          color: var(--background);
+          border: 1px solid var(--background);
+          background-color: var(--primary);
+          filter: drop-shadow(0px 0px 8px blue);
+        }
+      }
+
+      .img_container {
+        @include flex(row, center, center);
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    @include flex(column, center, center);
+    padding: 0 1rem;
+
+    .projects_container {
+      .project {
+        .links {
+          @include flex(column, center, flex-start);
+          width: 100%;
+          a {
+            margin-top: 0;
+            margin-right: 0;
+            margin: 0.5em 0;
+          }
+        }
+      }
+    }
+  }
+}
+/////////////////////////////////////////////////////////

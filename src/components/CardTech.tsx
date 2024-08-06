@@ -13,14 +13,14 @@ export default function CardTech() {
   return (
     <>
       <section className="home_tech">
-        <h2>Knowledge</h2>
+        <h2>Knowledge & Tools</h2>
         <ul>
           {[...data].map((item) => (
             <li key={item.name}>
               <img
                 src={list[item.name] ? list[item.name] : ""}
-                height={200}
-                width={200}
+                height={100}
+                width={100}
               />
               <Link to={item.url} target="_blank">
                 {item.name}

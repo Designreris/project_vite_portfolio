@@ -23,7 +23,7 @@ export const logoList = {
   react_native: react_native,
   next_js: next_js,
   node_js: node,
-  redux: redux,
+  redux_toolkit: redux,
   prisma: prisma,
   mysql: mysql,
   vite: vite,
