@@ -15,8 +15,7 @@ export default function HeroTop({ profilePic }: { profilePic: string }) {
         </h1>
         <p>
           Hi, I'm <span>Dominic</span> a Fullstack Web Developer.
-          <br /> I build websites & apps with Typescript, using libraries and
-          frameworks.
+          <br /> I build websites & apps using <span>TypeScript</span>.
         </p>
       </div>
     </div>

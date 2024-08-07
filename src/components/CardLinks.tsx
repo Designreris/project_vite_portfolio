@@ -5,6 +5,7 @@ export default function CardLinks({
   description,
   link,
   linkTxt,
+  target,
 }: {
   [key: string]: string
 }) {
@@ -13,7 +14,7 @@ export default function CardLinks({
       <div className="home_links">
         <h2>{title}</h2>
         <p>{description}</p>
-        <Link className="link" to={link} target="_blank">
+        <Link className="link" to={link} target={target}>
           {linkTxt}
         </Link>
       </div>

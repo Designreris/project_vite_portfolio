@@ -22,12 +22,14 @@ export default function Home() {
           description={linkData[0].description}
           link={linkData[0].link}
           linkTxt={"View Portfolio"}
+          target={""}
         />
         <CardLinks
           title={linkData[1].title}
           description={linkData[1].description}
           link={linkData[1].link}
           linkTxt={"View Code"}
+          target={"_blank"}
         />
         <CardTech />
       </div>

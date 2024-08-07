@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar"
 import Portfolio from "./Pages/Portfolio"
 import About from "./Pages/About"
 import { useState } from "react"
+import Footer from "./components/Footer"
 
 type ThemeState = [
   theme: string,
@@ -22,6 +23,7 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/about" element={<About />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </main>
   )
