@@ -1,24 +1,21 @@
+/////////////////////////////////////////////////////////
 // ==== Defaults ==== //
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
 html {
   font-family: "Source Sans 3", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   letter-spacing: 0.1px;
 }
-
 body {
   font-weight: 400;
   font-style: normal;
 }
-
 h1,
 h2,
 h3,
@@ -32,12 +29,10 @@ h2 {
   font-size: 1.75rem;
   text-transform: uppercase;
 }
-
 h3 {
   font-weight: 600;
 }
 /////////////////////////////////////////////////////////
-
 // ==== Themes ==== //
 main[data-theme="light"] {
   --text: #2b2b2b;
@@ -68,7 +63,6 @@ main::after {
   z-index: -200;
 }
 /////////////////////////////////////////////////////////
-
 // ==== Mixin ==== //
 @mixin flex($direction, $justify, $align) {
   display: flex;
@@ -77,7 +71,6 @@ main::after {
   align-items: $align;
 }
 /////////////////////////////////////////////////////////
-
 // ==== Animation ==== //
 @keyframes scroll {
   0% {
@@ -88,7 +81,6 @@ main::after {
   }
 }
 /////////////////////////////////////////////////////////
-
 // ==== Utility ==== //
 .link {
   margin-top: 1rem;
@@ -104,25 +96,24 @@ main::after {
   color: var(--background);
   border: 1px solid var(--background);
   background-color: var(--primary);
+  cursor: pointer;
   filter: drop-shadow(0px 0px 8px blue);
 }
 /////////////////////////////////////////////////////////
-
 // ==== Navbar ==== //
 // Desktop
 .nav_container {
   @include flex(row, flex-end, center);
   padding-inline: 1rem;
   background-color: var(--background);
-
   .nav-btn {
+    position: fixed;
+    top: 0;
     display: none;
   }
-
   .nav-items {
     @include flex(row, center, center);
     list-style-type: none;
-
     .nav-item {
       a {
         @include flex(row, center, center);
@@ -155,7 +146,6 @@ main::after {
       }
     }
   }
-
   .theme-btn {
     @include flex(row, center, center);
     padding: 1px;
@@ -167,13 +157,10 @@ main::after {
     cursor: pointer;
     outline: 3px solid var(--primary);
   }
-
-  // Mobile
   @media screen and (max-width: 767px) {
     @include flex(column, center, center);
     position: relative;
     padding: 0;
-
     .nav-btn {
       @include flex(row, center, center);
       width: 100%;
@@ -182,9 +169,8 @@ main::after {
       background-color: var(--accent);
       z-index: 2000;
     }
-
     .nav-items {
-      position: absolute;
+      position: fixed;
       flex-direction: column;
       width: 100%;
       padding-bottom: 1rem;
@@ -202,7 +188,6 @@ main::after {
   }
 }
 /////////////////////////////////////////////////////////
-
 // ==== Home Page ==== //
 // HeroTop
 .hero_container {
@@ -210,14 +195,12 @@ main::after {
   position: relative;
   min-height: 100svh;
   --pictureHeight: 200px;
-
   .hero_picture {
     margin-bottom: 4rem;
     width: var(--pictureHeight);
     height: var(--pictureHeight);
     border-radius: 50%;
     background-color: var(--background);
-
     img {
       @include flex(column, center, center);
       width: var(--pictureHeight);
@@ -229,7 +212,6 @@ main::after {
   }
   .hero_description {
     @include flex(column, center, center);
-
     p {
       text-align: center;
       span {
@@ -249,50 +231,56 @@ main::after {
   background-position: center;
   filter: var(--bg_filter);
   z-index: -100;
-
-  @media screen and (max-width: 767px) {
+}
+@media screen and (max-width: 767px) {
+  .hero_container {
+    @include flex(column, center, center);
+    .hero_picture {
+      align-self: center;
+    }
+    .hero_description {
+      @include flex(column, center, center);
+      text-align: center;
+    }
+  }
+  .hero_container::after {
     background-image: url("./assets//milad_fakurian_unsplash_low-res.jpg");
   }
 }
-
 // Links
 .home_links {
   @include flex(column, space-between, flex-start);
   padding: 2rem 4rem;
   background-color: var(--background);
-
   p {
     text-wrap: balance;
+    max-width: 100ch;
   }
 }
-
 // Tech Card
 .home_tech {
   @include flex(column, flex-start, center);
   position: relative;
   margin-top: 2rem;
   margin-inline: 4rem;
-  overflow: hidden;
-  height: 250px;
   background-color: var(--background);
-
   h2 {
     margin-right: auto;
     margin-bottom: 1rem;
   }
-
   ul {
-    @include flex(row, flex-start, center);
-    width: 100%;
-    overflow-x: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) var(--background);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
     li {
       @include flex(column, center, center);
       list-style-type: none;
       padding-inline: 1rem;
       margin-bottom: 1rem;
+      img {
+        height: auto;
+        width: 50%;
+      }
 
       a {
         position: relative;
@@ -320,7 +308,6 @@ main::after {
   // ul:hover {
   //   animation-play-state: paused;
   // }
-
   .home_tech::after {
     content: "";
     position: absolute;
@@ -328,61 +315,61 @@ main::after {
     z-index: -100;
   }
 }
-
-// Mobile
 @media screen and (max-width: 767px) {
   .hero_container {
-    @include flex(column, center, flex-start);
+    @include flex(column, center, center);
     padding: 0 1rem;
-
     .hero_right {
       margin-top: 2rem;
       margin-bottom: 2rem;
       margin-inline: auto;
-
       .profile_pic {
         transform: scale(1);
       }
     }
   }
-
   .home_links {
     padding: 1rem;
   }
-
   .home_tech {
     margin-inline: 1rem;
+    ul {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@media screen and (min-width: 1440px) {
+  .home_tech {
+    ul {
+      align-self: flex-start;
+      grid-template-columns: repeat(6, 1fr);
+      max-width: 50%;
+    }
   }
 }
 /////////////////////////////////////////////////////////
-
 // ==== Portfolio ==== //
 .portfolio_container {
   @include flex(column, center, flex-start);
   padding-inline: 4rem;
   overflow-x: hidden;
-
   .projects_container {
-    @include flex(column, center, center);
+    @include flex(column, center, flex-start);
     margin-bottom: 1rem;
-
     .project {
       @include flex(column, center, flex-start);
-
       h4 {
         font-size: 1rem;
         font-weight: 300;
         font-style: italic;
       }
-
       p {
         text-wrap: balance;
+        max-width: 100ch;
       }
-
       .links {
         @include flex(row, center, center);
         margin-bottom: 1rem;
-
         a {
           margin-top: 1rem;
           margin-right: 1rem;
@@ -401,18 +388,15 @@ main::after {
           filter: drop-shadow(0px 0px 8px blue);
         }
       }
-
       .img_container {
         @include flex(row, center, center);
         display: none;
       }
     }
   }
-
   @media screen and (max-width: 767px) {
-    @include flex(column, center, center);
+    @include flex(column, center, flex-start);
     padding: 0 1rem;
-
     .projects_container {
       .project {
         .links {
@@ -427,33 +411,77 @@ main::after {
       }
     }
   }
+  @media screen and (min-width: 1440px) {
+    h2 {
+      text-align: center;
+      align-self: center;
+    }
+    .projects_container {
+      align-items: center;
+      width: 100%;
+    }
+  }
 }
 /////////////////////////////////////////////////////////
-
 // ==== About Page ==== //
 .about_container {
   @include flex(column, flex-start, flex-start);
   padding-inline: 4rem;
-
   h3 {
     margin-top: 1rem;
   }
-
   p {
+    max-width: 100ch;
     span {
       text-decoration: none;
       color: var(--primary);
       font-weight: 600;
     }
   }
+  @media screen and (max-width: 767px) {
+    padding-inline: 1rem;
+  }
+  @media screen and (min-width: 1440px) {
+    align-items: center;
+  }
 }
-
 ///////////////////////////////////////////////////////
-
 // ==== Footer ==== //
 footer {
-  height: 32px;
-  width: 100%;
+  @include flex(column, center, center);
+  padding: 0.5rem 0;
+  background-color: var(--background);
+  .footer_container {
+    @include flex(row, center, center);
+    width: 100%;
+    a {
+      @include flex(column, center, center);
+      position: relative;
+      color: var(--primary);
+      text-decoration: none;
+      margin-inline: 1rem;
+    }
+    a::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary);
+      transform-origin: top;
+      transition: transform 0.25s ease-out;
+    }
+    a:hover::after {
+      transform: scaleX(1);
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .footer_container {
+      justify-content: space-around;
+      max-width: 50%;
+    }
+  }
 }
-
-//////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
