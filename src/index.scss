@@ -396,7 +396,7 @@ main::after {
   }
   @media screen and (max-width: 767px) {
     @include flex(column, center, flex-start);
-    padding: 0 1rem;
+    padding: 2rem 1rem;
     .projects_container {
       .project {
         .links {
