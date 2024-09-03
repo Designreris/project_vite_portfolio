@@ -15,10 +15,11 @@ export default function About() {
         <p>
           I currently live in <span>Birmingham</span>, <span>UK</span>. I work
           as a part-time <span>Driver</span> & <span>Warehouse</span> Operative.
-          Previously I have also previously worked in a well known high-street
-          bank dealing with customer accounts, an engineering headquarters as an{" "}
-          <span>Accounts Assistant</span> & delivering frozen/chilled/ambient
-          goods as a <span>HGV Driver.</span>
+          Previous positions that I have worked in include but not limited to
+          the following, a well known high-street bank as an{" "}
+          <span>Administrative Assistant</span>, an engineering headquarters as
+          an <span>Accounts Assistant</span>, a <span>HGV Driver</span>{" "}
+          delivering frozen/chilled/ambient goods.
           <br />
           <br />
           At the moment I am self-studying to be a{" "}
@@ -29,7 +30,7 @@ export default function About() {
           personal projects.
           <br />
           <br />
-          My short-term objective is to obtain a <span>entry-level</span>{" "}
+          My short-term objective is to obtain a <span>Entry-Level</span>{" "}
           position within the tech industry, as a <span>Developer</span> or
           similar, in order to build working knowledge within{" "}
           <span>Web/App</span> environments & developing transferable
@@ -58,8 +59,8 @@ export default function About() {
           <br />
           <br />I have used <span>Firebase</span>, <span>Netlify</span>,{" "}
           <span>Vercel</span>, <span>Render</span> and <span>AWS</span> hosts to
-          deploy my projects. For storage I have used <span>Mongodb</span>,{" "}
-          <span>PostgresSQL</span>, <span>Google Cloud</span> &{" "}
+          deploy my projects. For storage I have used <span>MongoDB</span>,{" "}
+          <span>PostgreSQL</span>, <span>Google Cloud</span> &{" "}
           <span>Prisma's SQL lite</span>.
         </p>
       </div>
